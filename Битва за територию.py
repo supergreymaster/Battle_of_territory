@@ -16,7 +16,6 @@ dictionary_for_optimization = {}
 CRUTCH_list = list()
 
 
-# Следущие классы будут обозначать виджеты, ну вы догадались какие
 class PushButton:  # Выпоняет функцию кнопки
     def __init__(self, scr):  # её характеристики
         self.image1_or_text0 = False
@@ -1183,8 +1182,8 @@ class Main_work:
         self.page = Title_1(self)
 
         # коректировка работы программы (необращайте внимание)
-        self.transition_1_2()
-        self.transition_prep_original()
+        # self.transition_1_2()
+        # self.transition_prep_original()
 
     def transition_1_2(self):
         for i in CRUTCH_list:
