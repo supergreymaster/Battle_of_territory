@@ -5,7 +5,8 @@ import shutil
 import sqlite3
 
 # COLOR_TEXT = (2, 105, 180)
-COLOR_TEXT = (250, 250, 0)
+# COLOR_TEXT = (250, 250, 0)
+COLOR_TEXT = (0, 0, 0)
 COLOR_TEXT_1 = (216, 183, 132)
 COLOR_PLAYER_1 = (0, 0, 255)
 COLOR_PLAYER_2 = (255, 0, 0)
@@ -555,7 +556,7 @@ class Title_1:  # это один из главных классов на кот
 class Main_page(Title_1):  # главная страница здесь происходит изменения настроек
     def create_label(self):
         self.main_page_original = Label(screen)
-        self.main_page_original.setGeometry(330, 200, 100, 50)
+        self.main_page_original.setGeometry(250, 100, 100, 50)
         self.main_page_original.font.setPointSize(48)
         self.main_page_original.setColor(COLOR_TEXT)
 
@@ -564,7 +565,7 @@ class Main_page(Title_1):  # главная страница здесь прои
 
     def create_pushbutton(self):
         self.main_page_but_original = PushButton(screen)
-        self.main_page_but_original.setGeometry(200, 250, 400, 400)
+        self.main_page_but_original.setGeometry(200, 200, 400, 400)
         self.main_page_but_original.setImage("photo/image_button/original_game.png")
         self.main_page_but_original.setClick(self.main_work.transition_2_prep)
 
@@ -659,11 +660,11 @@ class Main_page(Title_1):  # главная страница здесь прои
         elif tmp == "8":
             self.language.change_sql_setting("resolution_screen", "10")
         elif tmp == "15":
-            self.language.change_sql_setting("resolution_screen", "25")
-        elif tmp == "25":
-            self.language.change_sql_setting("resolution_screen", "50")
-        elif tmp == "50":
             self.language.change_sql_setting("resolution_screen", "5")
+        # elif tmp == "25":
+        #    self.language.change_sql_setting("resolution_screen", "5")
+        # elif tmp == "50":
+        #     self.language.change_sql_setting("resolution_screen", "5")
         self.update_page()
 
     def change_col_player(self):  # изменения количества игроков
@@ -804,10 +805,10 @@ class Prep_original_game(Main_page):  # вспывающее окно
         elif self.language.request_sql_setting("mode_game") == "true":
             self.language.change_sql_setting("mode_game", "false")
         self.prep_lower_comp_but.setText(self.language.request_sql_language("prep_mode_" +
-                                        self.language.request_sql_setting("mode_game") + "_"))
+                                         self.language.request_sql_setting("mode_game") + "_"))
 
         self.prep_lower_comp_hover.setText(self.language.request_sql_language("prep_mode_" +
-                                        self.language.request_sql_setting("mode_game") + "_"))
+                                           self.language.request_sql_setting("mode_game") + "_"))
 
 
 class Original_game:  # игровой класс
@@ -950,7 +951,6 @@ class Original_game:  # игровой класс
         if int(list_text[0]) == 0 or int(list_text[1]) == 0:
             self.sg.change_field("pole_" + self.view, (int(list_text[0]), int(list_text[1])), 0)
             self.sg.change_field_value("pole_" + self.view, (int(list_text[0]), int(list_text[1])), 0)
-            print("ok")
             return
 
         self.sg.change_field("pole_" + self.view, (int(list_text[0]), int(list_text[1])),
@@ -959,7 +959,6 @@ class Original_game:  # игровой класс
                                    list_text[3])
 
         self.loop = Game_loop(self.main_work, self)
-        print("ok")
 
 
 class Reproduction:  # Этот класс отвечает за атаку соседних клеток
@@ -969,7 +968,7 @@ class Reproduction:  # Этот класс отвечает за атаку со
         self.main_work = work
         self.orig = orig
 
-    def check_value(self):  # Проверка занчения ведь оно не должно превышать 4, если же превышает,
+    def check_value(self):  # Проверка занчения, ведь оно не должно превышать 4, если же превышает,
         # то программа запускает атаку соседних клеток
         self.view_number = self.start.request_sql_original_game("resolution_screen")
         self.view = "pole_" + self.view_number
@@ -1150,12 +1149,12 @@ class Game_loop:  # Занимается обновлением поля
                 civi = self.start_game.request_sql_original_game(f"color_player_{i.side}")
                 i.setImage(f"Start_game/model/{civi}/{i.value}.png")
 
-        for i in self.list_but_game:
-            print(i.image_way)
+        # for i in self.list_but_game:
+        #     print(i.image_way)
 
-        print(list_pole)
-        print(list_pole_value)
-        print("Ok")
+        # print(list_pole)
+        # print(list_pole_value)
+        # print("Ok")
 
         self.list_render = list()
         self.list_render.extend(self.list_player_statistics)
