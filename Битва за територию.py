@@ -108,6 +108,7 @@ class Game_pushbutton(PushButton):  # игровая кнопка в котор�
     def __init__(self, scr):
         super().__init__(scr)
 
+
         self.coor = (0, 0)
         self.side = 0
         self.value = 0
